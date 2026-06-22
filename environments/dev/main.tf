@@ -18,7 +18,7 @@ module "public_ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   security_group_id = module.sg.security_group_id
-  key_name      = aws_key_pair.dev.key_name
+  key_name      = aws_key_pair.this.key_name
 }
 
 module "private_ec2" {
@@ -28,7 +28,7 @@ module "private_ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   security_group_id = module.sg.security_group_id
-  key_name      = aws_key_pair.dev.key_name
+  key_name      = aws_key_pair.this.key_name
 }
 
 module "sg" {
