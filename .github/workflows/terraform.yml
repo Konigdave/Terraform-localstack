@@ -1,38 +1,51 @@
 name: Terraform CI
 
 on:
-push:
-branches:
-- main
-- dev
+  push:
+    branches:
+      - main
+      - dev
 
-pull_request:
-branches:
-- main
-- dev
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
-terraform:
-runs-on: ubuntu-latest
+  terraform:
+    runs-on: ubuntu-latest
 
-```
-defaults:
-  run:
-    working-directory: environments/dev
+    defaults:
+      run:
+        working-directory: environments/dev
 
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  - name: Setup Terraform
-    uses: hashicorp/setup-terraform@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
-  - name: Terraform Init
-    run: terraform init
+      - name: Terraform Init
+        run: terraform init
 
-  - name: Terraform Validate
-    run: terraform validate
+      - name: Terraform Validate
+        run: terraform validate
 
-  - name: Terraform Plan
-    run: terraform plan
-```
+      - name: Terraform Plan
+        run: terraform plan
+:::
+
+Notice:
+
+- `push:` is indented under `on:`
+- `branches:` is indented under `push:`
+- `jobs:` contains `terraform:`
+- No triple backticks (` ``` `) anywhere
+
+Then:
+
+```bash
+git add .github/workflows/terraform.yml
+git commit -m "Fix GitHub Actions YAML"
+git push
