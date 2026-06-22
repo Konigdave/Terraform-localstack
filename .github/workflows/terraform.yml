@@ -34,18 +34,3 @@ jobs:
 
       - name: Terraform Plan
         run: terraform plan
-:::
-
-Notice:
-
-- `push:` is indented under `on:`
-- `branches:` is indented under `push:`
-- `jobs:` contains `terraform:`
-- No triple backticks (` ``` `) anywhere
-
-Then:
-
-```bash
-git add .github/workflows/terraform.yml
-git commit -m "Fix GitHub Actions YAML"
-git push
