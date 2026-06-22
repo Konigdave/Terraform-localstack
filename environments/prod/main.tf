@@ -18,7 +18,7 @@ module "public_ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   security_group_id = module.sg.security_group_id
-  key_name      = aws_key_pair.dev.key_name
+  key_name      = aws_key_pair.this.key_name
 }
 
 module "private_ec2" {
@@ -28,7 +28,7 @@ module "private_ec2" {
   ami_id        = var.ami_id
   instance_type = var.instance_type
   security_group_id = module.sg.security_group_id
-  key_name      = aws_key_pair.dev.key_name
+  key_name      = aws_key_pair.this.key_name
 }
 
 module "sg" {
@@ -37,7 +37,7 @@ module "sg" {
   vpc_id = module.vpc.vpc_id
 }
 
-resource "aws_key_pair" "dev" {
-  key_name   = "terraform-dev-key"
-  public_key = file("~/.ssh/terraform-dev-key.pub")
+resource "aws_key_pair" "this" {
+  key_name   = "terraform-${var.env}-key"
+  public_key = file("~/.ssh/terraform-${var.env}-key.pub")
 }
