@@ -20,6 +20,7 @@ module "public_ec2" {
   security_group_id = module.sg.security_group_id
   key_name      = aws_key_pair.this.key_name
 }
+#tags
 
 module "private_ec2" {
   source = "../../modules/ec2"
