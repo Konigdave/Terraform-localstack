@@ -39,5 +39,5 @@ module "sg" {
 
 resource "aws_key_pair" "this" {
   key_name   = "terraform-${var.env}-key"
-  public_key = file("~/.ssh/terraform-${var.env}-key.pub")
+  public_key = file("${path.root}/../../keys/terraform-${var.env}-key.pub")
 }

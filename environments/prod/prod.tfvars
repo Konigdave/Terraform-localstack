@@ -1,0 +1,7 @@
+bucket_name = "prod-app-bucket-dave-994"
+cidr_block = "10.1.0.0/16"
+public_subnet_cidr = "10.1.1.0/24"
+private_subnet_cidr = "10.1.2.0/24"
+ami_id = "ami-0063861063744e26c"
+instance_type = "t3.small" 
+env = "prod"
